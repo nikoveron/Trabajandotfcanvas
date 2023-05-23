@@ -1,0 +1,73 @@
+Ejemplo creando imagen a través de un tensor:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>;
+        
+<!--        <script src="newjavascript.js" type="text/javascript"></script>-->
+    </head>
+    <body>
+       
+       
+        <div id="div" src=""></div>
+        <canvas id="cuadrado"></canvas>
+        <!-- <canvas id="imagen"></canvas>
+        <canvas id="aleatoriedad"></canvas> -->
+       
+        <script>
+       
+       
+        const cuadrado = tf.tensor([
+    [
+    [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30]  
+    ],
+  
+  [
+  [213, 43, 30], [213, 43, 30], [213, 43, 30], [255, 255, 255], [255, 255, 255], [255, 255, 255], [213, 43, 30], [213, 43, 30],[213, 43, 30]  
+  ],
+  [
+  [213, 43, 30], [213, 43, 30], [213, 43, 30], [255, 255, 255], [255, 255, 255], [255, 255, 255], [213, 43, 30], [213, 43, 30], [213, 43, 30]  
+  ],
+  [
+  [213, 43, 30], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [213, 43, 30]  
+  ],
+  [
+  [213, 43, 30], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [213, 43, 30]  
+  ],
+  [
+  [213, 43, 30], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [213, 43, 30]  
+  ],
+  [
+  [213, 43, 30], [213, 43, 30], [213, 43, 30], [255, 255, 255], [255, 255, 255], [255, 255, 255], [213, 43, 30], [213, 43, 30], [213, 43, 30]  
+  ],
+  [
+  [213, 43, 30],  [213, 43, 30], [213, 43, 30], [255, 255, 255], [255, 255, 255], [255, 255, 255], [213, 43, 30], [213, 43, 30], [213, 43, 30]  
+  ],
+  [
+  [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30], [213, 43, 30]  
+    ],
+], null, 'int32');
+            // Normalizar los valores de los píxeles en el rango [0 - 1]
+      const cuadradoNormalized = cuadrado.div(255);
+
+const resizedCuadrado = tf.image.resizeBilinear(cuadradoNormalized, [50, 50]);
+const canvasCuadrado = document.getElementById('cuadrado');
+tf.browser.toPixels(resizedCuadrado, canvasCuadrado).then(() => {
+  resizedCuadrado.dispose(); // Limpiar la imagen redimensionada
+  cuadrado.dispose(); // Limpiar el tensor original
+  console.log(tf.memory().numBytes);
+});
+       
+        /* const canvasCuadrado1 = document.getElementById("cuadrado");
+        tf.browser.toPixels(cuadrado, canvasCuadrado1).then(() => {
+                            // No es mala práctica limpiar y asegurarse de que tenemos todo bigMess.dispose();
+                            console.log(tf.memory().numBytes)
+                            }); */
+                       
+       
+        </script>
+    </body>
+</html>
